@@ -16,9 +16,6 @@ sumRange(0, 5) -> -3
 链接：https://leetcode-cn.com/problems/range-sum-query-immutable
 """
 from typing import List
-import sys
-
-sys.setrecursionlimit(10000)
 
 
 class NumArray:
