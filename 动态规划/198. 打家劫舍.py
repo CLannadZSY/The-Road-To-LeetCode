@@ -26,6 +26,8 @@ from typing import List
 
 class Solution:
     def rob(self, nums: List[int]) -> int:
+        # a 上个最大值
+        # b 当前最大值
         a, b = 0, 0
         for x in nums:
             b, a = max(a + x, b), b
