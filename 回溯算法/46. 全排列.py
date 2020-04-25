@@ -27,16 +27,29 @@ class Solution:
 
         def backtrack(nums, tmp):
             if not nums:
-                return [[]]
+                res.append(tmp)
+                return
 
             for i in range(len(nums)):
-                print((nums[:i] + nums[i + 1:]), tmp + [nums[i]])
+                print(nums[:i] + nums[i + 1:], tmp + [nums[i]])
                 backtrack(nums[:i] + nums[i + 1:], tmp + [nums[i]])
 
         backtrack(nums, [])
         return res
 
+    def permute2(self, nums: List[int]) -> List[List[int]]:
+
+        if not nums:
+            return [[]]
+        ans = []
+        for i in range(len(nums)):
+            for x in self.permute2(nums[:i] + nums[i + 1:]):
+                x.append(nums[i])
+                ans.append(x)
+        return ans
+
 
 s = Solution()
 nums = [1, 2, 3]
 print(s.permute(nums))
+print(s.permute2(nums))
