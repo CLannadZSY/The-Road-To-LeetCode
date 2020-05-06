@@ -82,10 +82,13 @@ class Solution:
             if i > j: return 0
             parity = (j - i - N) % 2
             if parity == 1:
+                # 亚历克斯 取走石头, 增加分数
                 return max(piles[i] + dp(i + 1, j), piles[j] + dp(i, j - 1))
             else:
+                # 李 取走石头, 减少分数
                 return min(-piles[i] + dp(i + 1, j), -piles[j] + dp(i, j - 1))
 
+        # 如果最终的分数大于0, 代表亚历克斯的分数大于李
         return dp(0, N - 1) > 0
 
 
