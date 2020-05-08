@@ -40,18 +40,27 @@ class Solution:
             dp[i][0] = max(dp[i - 1][0], dp[i - 1][1] + prices[i] - fee)
             dp[i][1] = max(dp[i - 1][1], dp[i - 1][0] - prices[i])
 
-        # [
-        #     [0, -1],
-        #     [1, -1],
-        #     [4, -1],
-        #     [4, 2],
-        #     [5, 2],
-        #     [8, 2]
-        # ]
         return dp[-1][0]
+
+    def maxProfit2(self, prices: List[int], fee: int) -> int:
+        if not prices:
+            return 0
+        unhold, hold = 0, -float("inf")
+        print(f'price=0, {unhold=}, {hold=}')
+        for price in prices:
+            # 不持有股票时的最大利润
+            # 可以保持不变，或者卖出这一天的股票
+            unhold = max(unhold, hold + price - fee)
+
+            # 持有股票时的最大利润
+            # 可以保持不变，或者买入这一天的股票
+            hold = max(hold, unhold - price)
+            print(f'{price=}, {unhold=}, {hold=}')
+        return unhold
 
 
 s = Solution()
 prices = [1, 4, 7, 2, 5, 8]  # 8
 fee = 2
 print(s.maxProfit(prices, fee))
+print(s.maxProfit2(prices, fee))
