@@ -61,7 +61,8 @@ class Solution:
         if len(prices) < 2:
             return 0
 
-        dp = [[0] * 2] * len(prices)
+        # dp = [[0] * 2] * len(prices)
+        dp = [[0, 0] for _ in range(len(prices))]
         dp[0][0] = 0
         dp[0][1] = -prices[0]
         for i in range(1, len(prices)):
