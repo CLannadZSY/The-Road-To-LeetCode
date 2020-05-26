@@ -42,30 +42,30 @@ class Solution:
         :return:
         """
 
-        if not height or len(height) < 2:return 0
+        if not height or len(height) < 2: return 0
         n = len(height)
 
         # two pointers
         left_max = height[0]
-        right_max = height[n-1]
+        right_max = height[n - 1]
 
         left_pos = 1
-        right_pos = n-2
+        right_pos = n - 2
         res = 0
         while left_pos <= right_pos:
             if left_max < right_max:
-                #处理左边的
+                # 处理左边的
                 water = left_max - height[left_pos]
                 if water > 0:
                     res += water
-                left_max = max(left_max,height[left_pos])
+                left_max = max(left_max, height[left_pos])
                 left_pos += 1
             else:
-                #处理右边的
+                # 处理右边的
                 water = right_max - height[right_pos]
                 if water > 0:
                     res += water
-                right_max = max(right_max,height[right_pos])
+                right_max = max(right_max, height[right_pos])
                 right_pos -= 1
         return res
 
