@@ -45,6 +45,17 @@ class Solution:
                 j += dj
         return r
 
+    def spiralOrder2(self, matrix: List[List[int]]) -> List[int]:
+        """
+        :param matrix:
+        :return:
+        """
+        res = []
+        while matrix:
+            res += matrix.pop(0)
+            matrix = list(map(list, zip(*matrix)))[::-1]
+        return res
+
 
 s = Solution()
 matrix = [
@@ -53,3 +64,9 @@ matrix = [
     [7, 8, 9]
 ]
 print(s.spiralOrder(matrix))
+matrix = [
+    [1, 2, 3],
+    [4, 5, 6],
+    [7, 8, 9]
+]
+print(s.spiralOrder2(matrix))
