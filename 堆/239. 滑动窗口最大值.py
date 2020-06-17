@@ -39,6 +39,12 @@ from typing import List
 
 class Solution:
     def maxSlidingWindow(self, nums: List[int], k: int) -> List[int]:
+        """
+        524 ms
+        :param nums:
+        :param k:
+        :return:
+        """
         ret = []
 
         temp_num = nums[:k]
