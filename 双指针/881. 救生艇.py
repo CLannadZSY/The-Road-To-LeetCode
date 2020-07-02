@@ -35,12 +35,13 @@ from typing import List
 
 class Solution:
     def numRescueBoats(self, people: List[int], limit: int) -> int:
-        people = sorted(people, reverse=True)
-        left, right, res = 0, len(people) - 1, 0
-        while left < right:
-            if people[left] + people[right] <= limit:
-                left, right = left + 1, right - 1
-            else:
-                left = left + 1
-            res += 1
-        return res + 1 if left == right else res
+        people.sort()
+        i, j = 0, len(people) - 1
+        ans = 0
+        while i <= j:
+            ans += 1
+            if people[i] + people[j] <= limit:
+                i += 1
+            j -= 1
+        return ans
+
