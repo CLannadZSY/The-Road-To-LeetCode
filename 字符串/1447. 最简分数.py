@@ -38,7 +38,7 @@ class Solution:
     def simplifiedFractions(self, n: int) -> List[str]:
         ret = []
         if n == 1: return ret
-        return [f"{j}/{i}" for i in range(1, n + 1) for j in range(1, i) if j == 1 or gcd(i, j) == 1]
+        return [f"{j}/{i}" for i in range(1, n + 1) for j in range(1, i) if j == 1 or math.gcd(i, j) == 1]
 
 
 s = Solution()
