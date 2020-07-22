@@ -119,4 +119,28 @@ class Solution:
 
         return ret
 
+    def queensAttacktheKing2(self, queens: List[List[int]], king: List[int]) -> List[List[int]]:
+        """优雅的解法"""
+        flag = [[False for _ in range(8)] for _ in range(8)]
+        for x in queens:
+            flag[x[0]][x[1]] = True
+        ret = []
+        vx = [0, 0, 1, -1, 1, 1, -1, -1]
+        vy = [1, -1, 0, 0, 1, -1, 1, -1]
+        for i in range(8):
+            x, y = king[0], king[1]
 
+            while 0 <= x < 8 and 0 <= y < 8:
+                if flag[x][y]:
+                    ret.append([x, y])
+                    break
+                x += vx[i]
+                y += vy[i]
+
+        return ret
+
+s = Solution()
+queens = [[0, 0], [1, 1], [2, 2], [3, 4], [3, 5], [4, 4], [4, 5]]
+king = [3, 3]
+print(s.queensAttacktheKing(queens, king))
+print(s.queensAttacktheKing2(queens, king))
