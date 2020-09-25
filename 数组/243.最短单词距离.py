@@ -26,14 +26,17 @@ from typing import List
 
 class Solution:
 
-    def wordSpacing(self, words: List, wordA: str, wordB: str):
+    def wordSpacing(self, words, wordA, wordB):
         if (wordA not in words) or (wordB not in words):
             return -1
 
         d = dict()
         ret = len(words)
         for i, w in enumerate(words):
-            d[w] = d.get(w, [i]) + [i]
+            if w in d:
+                d[w] += [i]
+            else:
+                d[w] = [i]
 
         for i in d[wordA]:
             for j in d[wordB]:
