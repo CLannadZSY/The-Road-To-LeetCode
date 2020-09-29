@@ -25,6 +25,9 @@ L     D     R
 E   O E   I I
 E C   I H   N
 T     S     G
+
+链接: https://leetcode-cn.com/problems/zigzag-conversion/
+许久不见, 变成 Z字转换了..
 """
 
 
