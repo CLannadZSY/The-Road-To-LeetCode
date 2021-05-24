@@ -45,22 +45,30 @@ s[i] 不是 '0' 就是 '1'
 
 class Solution:
     def checkZeroOnes(self, s: str) -> bool:
-        s += '#'
-        one_str, one_str_temp = 0, 0
-        zero_str, zero_str_temp = 0, 0
+        # s += '#'
+        # one_str, one_str_temp = 0, 0
+        # zero_str, zero_str_temp = 0, 0
+        #
+        # for i, x in enumerate(s[:-1], 1):
+        #     if x == '0':
+        #         zero_str_temp += 1
+        #     elif x == '1':
+        #         one_str_temp += 1
+        #
+        #     if s[i] != x:
+        #         one_str = max(one_str_temp, one_str)
+        #         zero_str = max(zero_str_temp, zero_str)
+        #         zero_str_temp, one_str_temp = 0, 0
+        #
+        # return zero_str < one_str
 
-        for i, x in enumerate(s[:-1], 1):
-            if x == '0':
-                zero_str_temp += 1
-            elif x == '1':
-                one_str_temp += 1
-
-            if s[i] != x:
-                one_str = max(one_str_temp, one_str)
-                zero_str = max(zero_str_temp, zero_str)
-                zero_str_temp, one_str_temp = 0, 0
-
-        return zero_str < one_str
+        # 这思路, 佩服佩服
+        for i in range(100, 0, -1):
+            if '0' * i in s:
+                return False
+            if '1' * i in s:
+                return True
+        return 0
 
 
 S = Solution()
