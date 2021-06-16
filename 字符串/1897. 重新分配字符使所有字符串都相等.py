@@ -42,7 +42,12 @@ class Solution:
         l_w = len(words)
         w = "".join(words)
         ww = Counter(w)
-        return all([x % l_w == 0 for x in set(ww.values())])
+        for x in set(ww.values()):
+            if x % l_w != 0:
+                return False
+        return True
+
+        # return all([x % l_w == 0 for x in set(ww.values())])
 
     def makeEqual2(self, words: List[str]) -> bool:
         """
