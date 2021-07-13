@@ -47,3 +47,20 @@ func intersect(nums1 []int, nums2 []int) []int {
     return intersection
 
 }
+
+// 解法2
+func intersect2(nums1 []int, nums2 []int) []int {
+    memo := map[int]int{}
+    for i := 0; i < len(nums1); i++ {
+        memo[nums1[i]]++
+    }
+
+    var res []int
+    for i := 0; i < len(nums2); i++ {
+        if memo[nums2[i]] > 0 {
+            res = append(res, nums2[i])
+            memo[nums2[i]]--
+        }
+    }
+    return res
+}
